@@ -41,7 +41,9 @@ modules:
     sources:
       - type: git
         url: https://github.com/YACReader/yacreader.git
-        tag: 9.9.2
+        tag: 9.10.0
+      - type: patch
+        path: translation.patch
       - type: file
         path: com.yacreader.YACReader.appdata.xml
     modules:
