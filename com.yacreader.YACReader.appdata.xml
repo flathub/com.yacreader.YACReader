@@ -68,6 +68,33 @@
         <binary>YACReaderLibraryServer</binary>
     </provides>
     <releases>
+        <release version="9.9.10.2210304" date="2022-10-30">
+            <description>
+                <p>YACReader</p>
+                <ul>
+                    <li>Fixed color selection dialog appearing as a subwindow in macos.</li>
+                    <li>Better support for HDPI screens (SVG icons).</li>
+                </ul>
+                <p>YACReaderLibrary</p>
+                <ul>
+                    <li>Update QtWebApp webserver to v1.8.6</li>
+                    <li>New folder content view that replaces the old "subfolders in this folder" view shown when folders don't have direct comics.</li>
+                    <li>Fixed going forward in history navigation.</li>
+                    <li>Continue Reading view that it is shown for the root folder.</li>
+                    <li>UI gets updated when YACReaderLibrary gets updates from YACReader or YACReader for iOS.</li>
+                    <li>Linux: Add fallback for dynamically loading libqrencode on distros that don't provide unversioned library symlinks</li>
+                    <li>Fixed selected folder restoration after folder updates.</li>
+                    <li>Better support for HDPI screens (SVG icons).</li>
+                    <li>Add option to delete metadata from comics.</li>
+                    <li>Importing ComicInfo.XML is now optional and disabled by default, you can change the behavior in Settings -> General.</li>
+                    <li>Add option to scan XML metadata from all the comics in a folder.</li>
+                </ul>
+                <p>Server</p>
+                <ul>
+                    <li>Add webui status page (reachable by navigating to server::port/webui)</li>
+                </ul>
+            </description>
+        </release>
         <release version="9.9.2.2210021" date="2022-10-02">
             <description>
                 <p>YACReaderLibrary</p>
