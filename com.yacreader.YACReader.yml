@@ -41,7 +41,9 @@ modules:
     sources:
       - type: git
         url: https://github.com/YACReader/yacreader.git
-        tag: 9.9.2
+        tag: 9.10.0
+      - type: patch
+        path: translation.patch
       - type: file
         path: com.yacreader.YACReader.appdata.xml
     modules:
@@ -74,7 +76,7 @@ modules:
           - gn --root=pdfium gen pdfium/out/Release --args="is_clang=false use_sysroot=false is_debug=false symbol_level=0 pdf_enable_v8=false pdf_enable_xfa=false treat_warnings_as_errors=false use_system_libjpeg=true use_system_zlib=true pdf_bundle_freetype=false use_system_freetype=true use_system_lcms2=true use_system_libpng=true use_custom_libcxx=false pdf_is_standalone=true use_system_libopenjpeg2=true is_component_build=true use_gold=false"
           - ninja -C pdfium/out/Release pdfium
           # TODO: use a variable for version
-          - sed -e 's/@VERSION@/5249/g' -e 's#^\s*prefix\s*=.*$#prefix='"$FLATPAK_DEST"'#' -i libpdfium.pc
+          - sed -e 's/@VERSION@/5304/g' -e 's#^\s*prefix\s*=.*$#prefix='"$FLATPAK_DEST"'#' -i libpdfium.pc
           # Install
           - install -D -m644 pdfium/LICENSE "$FLATPAK_DEST/share/licenses/pdfium/LICENSE"
           - install -D pdfium/public/*.h --target-directory="$FLATPAK_DEST/include/pdfium"
@@ -86,19 +88,19 @@ modules:
           - type: git
             url: https://pdfium.googlesource.com/pdfium
             # curl 'https://omahaproxy.appspot.com/linux?channel=stable' | cut -d'.' -f 3
-            # branch: chromium/5249
+            # branch: chromium/5304
             # TODO: Using commit instead of branch is suboptimal, but linting enforces it
-            commit: c5f61025a75118b24885f97db4ecfe7f81db462d
+            commit: 6d0a3d5365d04967d67399617acc16bc7e7efe52
             dest: pdfium
           - type: git
             url: https://chromium.googlesource.com/chromium/src/build.git
             # awk '/build_revision/ {print substr($2,2,40)}' pdfium/DEPS
-            commit: 26f8da34750ac3bccf683ed5f70d86f21c54b22b
+            commit: 06b2219669da3726ef223b41a746ce4db6a3b8f0
             dest: pdfium/build
           - type: git
             url: https://chromium.googlesource.com/chromium/src/third_party/abseil-cpp
             # awk '/abseil_revision/ {print substr($2,2,40)}' pdfium/DEPS
-            commit: 62a4d6866aeeca02036c510b2f3f286084dd62af
+            commit: d8ee1019415f3e333fbc3484a278e53ab36ecc03
             dest: pdfium/third_party/abseil-cpp
           - type: file
             url: https://chromium.googlesource.com/chromium/src/+/master/tools/generate_shim_headers/generate_shim_headers.py?format=TEXT
@@ -123,5 +125,5 @@ modules:
             sources:
               - type: git
                 url: https://gn.googlesource.com/gn
-                commit: 9ef321772ecc161937db69acb346397e0ccc484d
+                commit: 00b741b1568d56cf4e117dcb9f70cd42653b4c78
                 disable-shallow-clone: true
