@@ -12,16 +12,25 @@
             All you need to enjoy your digital comics.
         </p>
         <p>
-            Browse your comics collections using beautiful, customizable and smooth "comic flow" transitions.
+            Browse your comics collections using beautiful, customizable and smooth "comic flow"
+            transitions.
         </p>
         <p>Features:</p>
         <ul>
-            <li>File support: YACReader supports a wide variety of comic files and image types. rar, zip, cbr, cbz, tar, pdf, 7z and cb7, jpeg, gif, png, tiff and bmp.</li>
-            <li>Configure your reading: Image rotation, double page mode, full size view, fullscreen mode, customizable background color, custom page fitting mode, bookmarks, resume reading, eye candy 'go to' and more.</li>
-            <li>Image improvements: Bring to life your old comics with the image adjustments available in the reading mode. Use the brightness, contrast and gamma sliders and enjoy the new vibrant colors.</li>
-            <li>Track your readings: YACReaderLibrary organizes your comics and keeps track of your reading progress and your collections' status.</li>
-            <li>Tags (comic vine): Download your comics' information from Comic Vine. Title, number, volumen, authors and more.</li>
-            <li>Search: Find your comics quickly using the built-in search engine. No matter how big is your collection, YACReaderLibrary will find anything instantly.</li>
+            <li>File support: YACReader supports a wide variety of comic files and image types. rar,
+                zip, cbr, cbz, tar, pdf, 7z and cb7, jpeg, gif, png, tiff and bmp.</li>
+            <li>Configure your reading: Image rotation, double page mode, full size view, fullscreen
+                mode, customizable background color, custom page fitting mode, bookmarks, resume
+                reading, eye candy 'go to' and more.</li>
+            <li>Image improvements: Bring to life your old comics with the image adjustments
+                available in the reading mode. Use the brightness, contrast and gamma sliders and
+                enjoy the new vibrant colors.</li>
+            <li>Track your readings: YACReaderLibrary organizes your comics and keeps track of your
+                reading progress and your collections' status.</li>
+            <li>Tags (comic vine): Download your comics' information from Comic Vine. Title, number,
+                volumen, authors and more.</li>
+            <li>Search: Find your comics quickly using the built-in search engine. No matter how big
+                is your collection, YACReaderLibrary will find anything instantly.</li>
         </ul>
     </description>
     <categories>
@@ -68,7 +77,29 @@
         <binary>YACReaderLibraryServer</binary>
     </provides>
     <releases>
-        <release version="9.9.10.2210304" date="2022-10-30">
+        <release version="9.11.0.2301073" date="2023-01-07">
+            <description>
+                <p>YACReader</p>
+                <ul>
+                    <li>Fix segfault (or worse) when exiting YACReader while processing a comic</li>
+                    <li>Fix
+                    last read page calculation in double page mode</li>h </ul>
+                <p>YACReaderLibrary</p>
+                <ul>
+                    <li>Fix drag and drop in the comics grid view</li>
+                    <li>Detect back/forward mouse buttons to move back and forward through the
+                        browsing history</li>
+                    <li>Fix crash when disabling the server</li>
+                </ul>
+                <p>All apps</p>
+                <ul>
+                    <li>Run logger in a dedicated thread to avoid segfaults at application shutdown</li>
+                    <li>Add support for poppler-qt6 pdf backend</li>
+                    <li>Remove image allocation limit</li>
+                </ul>
+            </description>
+        </release>
+        <release version="9.10.2210304" date="2022-10-30">
             <description>
                 <p>YACReader</p>
                 <ul>
@@ -78,15 +109,19 @@
                 <p>YACReaderLibrary</p>
                 <ul>
                     <li>Update QtWebApp webserver to v1.8.6</li>
-                    <li>New folder content view that replaces the old "subfolders in this folder" view shown when folders don't have direct comics.</li>
+                    <li>New folder content view that replaces the old "subfolders in this folder"
+                        view shown when folders don't have direct comics.</li>
                     <li>Fixed going forward in history navigation.</li>
                     <li>Continue Reading view that it is shown for the root folder.</li>
-                    <li>UI gets updated when YACReaderLibrary gets updates from YACReader or YACReader for iOS.</li>
-                    <li>Linux: Add fallback for dynamically loading libqrencode on distros that don't provide unversioned library symlinks</li>
+                    <li>UI gets updated when YACReaderLibrary gets updates from YACReader or
+                        YACReader for iOS.</li>
+                    <li>Linux: Add fallback for dynamically loading libqrencode on distros that
+                        don't provide unversioned library symlinks</li>
                     <li>Fixed selected folder restoration after folder updates.</li>
                     <li>Better support for HDPI screens (SVG icons).</li>
                     <li>Add option to delete metadata from comics.</li>
-                    <li>Importing ComicInfo.XML is now optional and disabled by default, you can change the behavior in Settings -> General.</li>
+                    <li>Importing ComicInfo.XML is now optional and disabled by default, you can
+                        change the behavior in Settings -> General.</li>
                     <li>Add option to scan XML metadata from all the comics in a folder.</li>
                 </ul>
                 <p>Server</p>
@@ -125,10 +160,12 @@
                 <p>YACReader</p>
                 <ul>
                     <li>Show error when opening bad open recent entries</li>
-                    <li>GoTo page: Fix segfault when entering page numbers greater than comic's page count
-                    (toolbar and page flow)</li>
+                    <li>GoTo page: Fix segfault when entering page numbers greater than comic's page
+                        count
+                        (toolbar and page flow)</li>
                     <li>Initialize GotoFlow on current page, not cover</li>
-                    <li>navigation mode: Fix page index error when using both mouse and keyboard for navigation</li>
+                    <li>navigation mode: Fix page index error when using both mouse and keyboard for
+                        navigation</li>
                     <li>Remove obsolete double page mode debug messages</li>
                     <li>Support HDPI screens.</li>
                     <li>Use one wheel mouse step per page in full page mode.</li>
@@ -157,7 +194,8 @@
                 </ul>
                 <p>Server</p>
                 <ul>
-                    <li>Always serve a cover image to the iOS client for any folder that has content (requeries a library content update).</li>
+                    <li>Always serve a cover image to the iOS client for any folder that has content
+                        (requeries a library content update).</li>
                 </ul>
             </description>
         </release>
