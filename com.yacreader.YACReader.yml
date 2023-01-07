@@ -41,9 +41,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/YACReader/yacreader.git
-        tag: 9.10.0
-      - type: patch
-        path: translation.patch
+        tag: 9.11.0
       - type: file
         path: com.yacreader.YACReader.appdata.xml
     modules:
@@ -73,10 +71,10 @@ modules:
           # Remove cross-compile-toolchain-prefix for gcc (needed for aarch64 build)
           - sed -i 's/"aarch64-linux-gnu-"/""/g' pdfium/build/toolchain/linux/BUILD.gn
           # Build
-          - gn --root=pdfium gen pdfium/out/Release --args="is_clang=false use_sysroot=false is_debug=false symbol_level=0 pdf_enable_v8=false pdf_enable_xfa=false treat_warnings_as_errors=false use_system_libjpeg=true use_system_zlib=true pdf_bundle_freetype=false use_system_freetype=true use_system_lcms2=true use_system_libpng=true use_custom_libcxx=false pdf_is_standalone=true use_system_libopenjpeg2=true is_component_build=true use_gold=false"
+          - gn --root=pdfium gen pdfium/out/Release --args="is_clang=false use_sysroot=false is_debug=false symbol_level=0 pdf_enable_v8=false pdf_enable_xfa=false treat_warnings_as_errors=false use_system_libjpeg=true use_system_zlib=true pdf_bundle_freetype=false use_system_freetype=true use_system_lcms2=true use_system_libpng=true use_custom_libcxx=false pdf_is_standalone=true use_system_libopenjpeg2=true is_component_build=true use_gold=false pdf_use_partition_alloc = false"
           - ninja -C pdfium/out/Release pdfium
           # TODO: use a variable for version
-          - sed -e 's/@VERSION@/5304/g' -e 's#^\s*prefix\s*=.*$#prefix='"$FLATPAK_DEST"'#' -i libpdfium.pc
+          - sed -e 's/@VERSION@/5359/g' -e 's#^\s*prefix\s*=.*$#prefix='"$FLATPAK_DEST"'#' -i libpdfium.pc
           # Install
           - install -D -m644 pdfium/LICENSE "$FLATPAK_DEST/share/licenses/pdfium/LICENSE"
           - install -D pdfium/public/*.h --target-directory="$FLATPAK_DEST/include/pdfium"
@@ -88,19 +86,19 @@ modules:
           - type: git
             url: https://pdfium.googlesource.com/pdfium
             # curl 'https://omahaproxy.appspot.com/linux?channel=stable' | cut -d'.' -f 3
-            # branch: chromium/5304
+            # branch: chromium/5359
             # TODO: Using commit instead of branch is suboptimal, but linting enforces it
-            commit: 6d0a3d5365d04967d67399617acc16bc7e7efe52
+            commit: 9d2c662f557544e5edb74a60b52fb297f4c5dfee
             dest: pdfium
           - type: git
             url: https://chromium.googlesource.com/chromium/src/build.git
             # awk '/build_revision/ {print substr($2,2,40)}' pdfium/DEPS
-            commit: 06b2219669da3726ef223b41a746ce4db6a3b8f0
+            commit: 01569374d46a14b225586c564146a8e1749520b6
             dest: pdfium/build
           - type: git
             url: https://chromium.googlesource.com/chromium/src/third_party/abseil-cpp
             # awk '/abseil_revision/ {print substr($2,2,40)}' pdfium/DEPS
-            commit: d8ee1019415f3e333fbc3484a278e53ab36ecc03
+            commit: 751b72a8c1370f4586f5f726e396262f98f4dcdb
             dest: pdfium/third_party/abseil-cpp
           - type: file
             url: https://chromium.googlesource.com/chromium/src/+/master/tools/generate_shim_headers/generate_shim_headers.py?format=TEXT
@@ -125,5 +123,5 @@ modules:
             sources:
               - type: git
                 url: https://gn.googlesource.com/gn
-                commit: 00b741b1568d56cf4e117dcb9f70cd42653b4c78
+                commit: cc28efe62ef0c2fb32455f414a29c4a55bb7fbc4
                 disable-shallow-clone: true
