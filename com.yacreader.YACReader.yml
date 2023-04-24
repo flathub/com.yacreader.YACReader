@@ -70,6 +70,8 @@ modules:
           - sed -i '/"\/\/third_party\/test_fonts",/s/^/#/g' pdfium/testing/BUILD.gn
           # Remove cross-compile-toolchain-prefix for gcc (needed for aarch64 build)
           - sed -i 's/"aarch64-linux-gnu-"/""/g' pdfium/build/toolchain/linux/BUILD.gn
+          # Use correct no-outline for gcc (needed for aarch64)
+          - sed -i 's/"-mno-outline"/"-mno-outline-atomics"/g' pdfium/build/config/compiler/BUILD.gn
           # Build
           - gn --root=pdfium gen pdfium/out/Release --args="is_clang=false use_sysroot=false is_debug=false symbol_level=0 pdf_enable_v8=false pdf_enable_xfa=false treat_warnings_as_errors=false use_system_libjpeg=true use_system_zlib=true pdf_bundle_freetype=false use_system_freetype=true use_system_lcms2=true use_system_libpng=true use_custom_libcxx=false pdf_is_standalone=true use_system_libopenjpeg2=true is_component_build=true use_gold=false pdf_use_partition_alloc = false"
           - ninja -C pdfium/out/Release pdfium
