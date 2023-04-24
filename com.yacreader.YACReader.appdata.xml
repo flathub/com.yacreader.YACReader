@@ -83,7 +83,7 @@
                 <ul>
                     <li>Fix scroll in grid views when using Qt6 builds</li>
                     <li>Fix deleting metadata from comics also deleted the number of pages info</li>
-                    <li>Use https://github.com/nayuki/QR-Code-generator instead of libqrencode for
+                    <li>Use nayuki/QR-Code-generator instead of libqrencode for
                         QR code generation</li>
                     <li>Do not accept empty values for the server port in the server settings
                         dialog.</li>
