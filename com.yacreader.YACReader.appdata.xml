@@ -77,6 +77,24 @@
         <binary>YACReaderLibraryServer</binary>
     </provides>
     <releases>
+        <release version="9.12.0.2304234" date="2023-04-23">
+            <description>
+                <p>YACReaderLibrary</p>
+                <ul>
+                    <li>Fix scroll in grid views when using Qt6 builds</li>
+                    <li>Fix deleting metadata from comics also deleted the number of pages info</li>
+                    <li>Use https://github.com/nayuki/QR-Code-generator instead of libqrencode for
+                        QR code generation</li>
+                    <li>Do not accept empty values for the server port in the server settings
+                        dialog.</li>
+                </ul>
+                <p>Server</p>
+                <ul>
+                    <li>New search API that exposes the search engine.</li>
+                    <li>Print scannable QR code at server start</li>
+                </ul>
+            </description>
+        </release>
         <release version="9.11.0.2301073" date="2023-01-07">
             <description>
                 <p>YACReader</p>
