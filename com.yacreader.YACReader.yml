@@ -41,7 +41,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/YACReader/yacreader.git
-        tag: 9.11.0
+        tag: 9.12.0
       - type: file
         path: com.yacreader.YACReader.appdata.xml
     modules:
@@ -70,8 +70,10 @@ modules:
           - sed -i '/"\/\/third_party\/test_fonts",/s/^/#/g' pdfium/testing/BUILD.gn
           # Remove cross-compile-toolchain-prefix for gcc (needed for aarch64 build)
           - sed -i 's/"aarch64-linux-gnu-"/""/g' pdfium/build/toolchain/linux/BUILD.gn
+          # Use correct no-outline for gcc (needed for aarch64)
+          - sed -i 's/"-mno-outline"/"-mno-outline-atomics"/g' pdfium/build/config/compiler/BUILD.gn
           # Build
-          - gn --root=pdfium gen pdfium/out/Release --args="is_clang=false use_sysroot=false is_debug=false symbol_level=0 pdf_enable_v8=false pdf_enable_xfa=false treat_warnings_as_errors=false use_system_libjpeg=true use_system_zlib=true pdf_bundle_freetype=false use_system_freetype=true use_system_lcms2=true use_system_libpng=true use_custom_libcxx=false pdf_is_standalone=true use_system_libopenjpeg2=true is_component_build=true use_gold=false pdf_use_partition_alloc = false"
+          - gn --root=pdfium gen pdfium/out/Release --args="is_clang=false use_sysroot=false is_debug=false symbol_level=0 pdf_enable_v8=false pdf_enable_xfa=false treat_warnings_as_errors=false use_system_libjpeg=true use_system_zlib=true pdf_bundle_freetype=false use_system_freetype=true use_system_lcms2=true use_system_libpng=true use_custom_libcxx=false pdf_is_standalone=true use_system_libopenjpeg2=true is_component_build=true pdf_use_partition_alloc=false"
           - ninja -C pdfium/out/Release pdfium
           # TODO: use a variable for version
           - sed -e 's/@VERSION@/5359/g' -e 's#^\s*prefix\s*=.*$#prefix='"$FLATPAK_DEST"'#' -i libpdfium.pc
@@ -88,17 +90,17 @@ modules:
             # curl 'https://omahaproxy.appspot.com/linux?channel=stable' | cut -d'.' -f 3
             # branch: chromium/5359
             # TODO: Using commit instead of branch is suboptimal, but linting enforces it
-            commit: 9d2c662f557544e5edb74a60b52fb297f4c5dfee
+            commit: 4090d4c0f9873f5f50b630c26c2439b5297a6e49
             dest: pdfium
           - type: git
             url: https://chromium.googlesource.com/chromium/src/build.git
             # awk '/build_revision/ {print substr($2,2,40)}' pdfium/DEPS
-            commit: 01569374d46a14b225586c564146a8e1749520b6
+            commit: ae79e722885ba64dabe5356feaed60c7ab369251
             dest: pdfium/build
           - type: git
             url: https://chromium.googlesource.com/chromium/src/third_party/abseil-cpp
             # awk '/abseil_revision/ {print substr($2,2,40)}' pdfium/DEPS
-            commit: 751b72a8c1370f4586f5f726e396262f98f4dcdb
+            commit: cd843b25b4c6e2c730e919967b43d7f643b3e408
             dest: pdfium/third_party/abseil-cpp
           - type: file
             url: https://chromium.googlesource.com/chromium/src/+/master/tools/generate_shim_headers/generate_shim_headers.py?format=TEXT
@@ -123,5 +125,5 @@ modules:
             sources:
               - type: git
                 url: https://gn.googlesource.com/gn
-                commit: cc28efe62ef0c2fb32455f414a29c4a55bb7fbc4
+                commit: 84c8431f3e03cc6226c59dd49637c15ea31169a1
                 disable-shallow-clone: true
