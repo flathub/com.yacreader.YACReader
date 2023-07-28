@@ -77,6 +77,62 @@
         <binary>YACReaderLibraryServer</binary>
     </provides>
     <releases>
+        <release version="9.13.1.2307166" date="2023-07-16">
+            <description>
+                <p>YACReaderLibrary</p>
+                <ul>
+                    <li> Fix crash when dropping comics in sublists </li>
+                </ul>
+            </description>
+        </release>
+        <release version="9.13.0.2307095" date="2023-07-09">
+            <description>
+                <p>YACReaderLibrary</p>
+                <ul>
+                    <li>Avoid showing stale information in the server config dialog by updating the
+                        connection information when the dialog is opened.</li>
+                    <li>Add new metadata support, it improves compatibility with ComicInfo.xml</li>
+                    <li>Add support for showing a "recently added/updated" indicator. The number of
+                        days to consider something recent can be configured in the settings.</li>
+                    <li>Improved comic metadata dialog.</li>
+                    <li>Add textual tags support that can be queried through the search engine.</li>
+                    <li>Make = in the search engine work as : does.</li>
+                    <li>Add new operators to the search engine: exact match ==, &lt;,&gt;,
+                        &lt;=,&gt;=.</li>
+                    <li>Support filtering by since/before dates in the search engine. e.g. added
+                        &gt; 7
+                        means recent content added since 7 days ago, and added &lt; 30 means content
+                        added before the last 30 days.</li>
+                    <li>Show the full library path in the dialog shown to warn about missing
+                        libraries.</li>
+                    <li>Fix scroll bar in the info comics view in Qt6 builds.</li>
+                    <li>New Recent smart list, it will show recent comics added.</li>
+                    <li>Try to detect changed files with the same name on libraries updates, there
+                        is also a new setting to decide if the modified date of a file should be
+                        used as an indicator to know if the file has been changed since it was added
+                        (disabled by default).</li>
+                    <li>Fix alphanumeric navigation in the folders tree view. Shortcuts were
+                        interfering the default behaviour, now some shortcuts will be ignored if the
+                        folders tree has the focus.</li>
+                    <li>Fix sorting in the Comic Vine series selection dialog.</li>
+                    <li>Fix getting only distinct rows when querying folders through the search
+                        engine.</li>
+                </ul>
+                <p>YACReader</p>
+                <ul>
+                    <li>Add shortcuts for moving by one the double page mode to the left/right, by
+                        default CTRL + SHIFT + LEFT, and, CTRL + SHIFT + RIGHT. Remember that you
+                        can change any shortcut in the shortcuts dialog. You can also achieve this
+                        functionality using the "Go to page flow" and chossing the page you want to
+                        be on the left/right (depending on the reading mode comic/manga).</li>
+                </ul>
+                <p>All Apps</p>
+                <ul>
+                    <li>New icons for macos.</li>
+                </ul>
+            </description>
+        </release>
+
         <release version="9.12.0.2304234" date="2023-04-23">
             <description>
                 <p>YACReaderLibrary</p>
