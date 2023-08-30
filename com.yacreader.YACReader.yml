@@ -10,6 +10,9 @@ finish-args:
   - --share=network
   - --device=dri
   - --filesystem=home
+  - --filesystem=/mnt
+  - --filesystem=/media
+  - --filesystem=/run/media
 rename-desktop-file: YACReader.desktop
 rename-icon: YACReader
 cleanup:
@@ -90,19 +93,19 @@ modules:
           - type: git
             url: https://pdfium.googlesource.com/pdfium
             # curl 'https://omahaproxy.appspot.com/linux?channel=stable' | cut -d'.' -f 3
-            # branch: chromium/5735
+            # branch: chromium/5845
             # TODO: Using commit instead of branch is suboptimal, but linting enforces it
-            commit: c739696a25a3b515e208cafa2e944d377ee37307
+            commit: 6c2c8ce87dfbf69b533e97f78807dff28c95f014
             dest: pdfium
           - type: git
             url: https://chromium.googlesource.com/chromium/src/build.git
             # awk '/build_revision/ {print substr($2,2,40)}' pdfium/DEPS
-            commit: 3c905595655049cd3c7001e18ee07d860452f206
+            commit: e100e80a1c610de82745e07c609e646e47774c4c
             dest: pdfium/build
           - type: git
             url: https://chromium.googlesource.com/chromium/src/third_party/abseil-cpp
             # awk '/abseil_revision/ {print substr($2,2,40)}' pdfium/DEPS
-            commit: c7a5260448b1c15492f4c7a09cb3b17b1a592150
+            commit: d27fcebaf6851323d12ac63af3c9ac3581f7c8bd
             dest: pdfium/third_party/abseil-cpp
           - type: file
             url: https://chromium.googlesource.com/chromium/src/+/master/tools/generate_shim_headers/generate_shim_headers.py?format=TEXT
