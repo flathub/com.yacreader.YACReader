@@ -1,6 +1,6 @@
 app-id: com.yacreader.YACReader
 runtime: org.kde.Platform
-runtime-version: "5.15-22.08"
+runtime-version: "6.5"
 sdk: org.kde.Sdk
 command: YACReader
 finish-args:
@@ -53,7 +53,7 @@ modules:
         sources:
           - type: git
             url: https://github.com/selmf/unarr.git
-            commit: cf4deedfdd2b815ae2ad0f24cfda72c3d8083d14
+            tag: v1.1.0
         config-opts:
           - -D ENABLE_7Z=ON
       - name: pdfium
