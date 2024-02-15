@@ -4,7 +4,9 @@
     <metadata_license>FSFAP</metadata_license>
     <project_license>GPL-3.0-only</project_license>
     <name>YACReader</name>
-    <developer_name>Luis Ángel San Martín Rodríguez</developer_name>
+    <developer id="com.yacreader">
+        <name>Luis Ángel San Martín Rodríguez</name>
+    </developer>
     <summary>Yet another comic reader</summary>
     <description>
         <p>
@@ -59,30 +61,23 @@
     <provides>
         <mediatype>application/x-cbz</mediatype>
         <mediatype>application/x-cbr</mediatype>
-        <mediatype>
-        application/x-cbt</mediatype>
+        <mediatype>application/x-cbt</mediatype>
         <mediatype>application/x-cb7</mediatype>
-        <mediatype>
-        application/x-pdf</mediatype>
+        <mediatype>application/x-pdf</mediatype>
         <mediatype>application/x-zip</mediatype>
-        <mediatype>
-        application/x-rar</mediatype>
+        <mediatype>application/x-rar</mediatype>
         <mediatype>application/x-7z</mediatype>
-        <mediatype>
-        inode/directory</mediatype>
+        <mediatype>inode/directory</mediatype>
         <mediatype>application/vnd.comicbook-rar</mediatype>
-        <mediatype>
-        application/vnd.comicbook+zip</mediatype>
+        <mediatype>application/vnd.comicbook+zip</mediatype>
         <mediatype>application/pdf</mediatype>
-        <mediatype>
-        application/vnd.rar</mediatype>
+        <mediatype>application/vnd.rar</mediatype>
         <mediatype>application/x-7z-compressed</mediatype>
-        <mediatype>
-        application/zip</mediatype>
+        <mediatype>application/zip</mediatype>
         <binary>YACReader</binary>
         <binary>YACReaderLibrary</binary>
-        <binary>
-        YACReaderLibraryServer</binary>3 </provides>
+        <binary>YACReaderLibraryServer</binary>
+    </provides>
     <releases>
         <release version="9.14.2." date="2024-02-15">
             <description>
