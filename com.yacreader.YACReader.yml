@@ -44,7 +44,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/YACReader/yacreader.git
-        tag: 9.13.1
+        tag: 9.14.2
       - type: file
         path: com.yacreader.YACReader.appdata.xml
     modules:
@@ -53,9 +53,7 @@ modules:
         sources:
           - type: git
             url: https://github.com/selmf/unarr.git
-            tag: v1.1.0
-        config-opts:
-          - -D ENABLE_7Z=ON
+            tag: v1.1.1
       - name: pdfium
         buildsystem: simple
         build-commands:
@@ -81,7 +79,7 @@ modules:
           - gn --root=pdfium gen pdfium/out/Release --args="is_clang=false use_sysroot=false is_debug=false symbol_level=0 pdf_enable_v8=false pdf_enable_xfa=false treat_warnings_as_errors=false use_system_libjpeg=true use_system_zlib=true pdf_bundle_freetype=false use_system_freetype=true use_system_lcms2=true use_system_libpng=true use_custom_libcxx=false pdf_is_standalone=true use_system_libopenjpeg2=true is_component_build=true pdf_use_partition_alloc=false"
           - ninja -C pdfium/out/Release pdfium
           # TODO: use a variable for version
-          - sed -e 's/@VERSION@/5359/g' -e 's#^\s*prefix\s*=.*$#prefix='"$FLATPAK_DEST"'#' -i libpdfium.pc
+          - sed -e 's/@VERSION@/6167/g' -e 's#^\s*prefix\s*=.*$#prefix='"$FLATPAK_DEST"'#' -i libpdfium.pc
           # Install
           - install -D -m644 pdfium/LICENSE "$FLATPAK_DEST/share/licenses/pdfium/LICENSE"
           - install -D pdfium/public/*.h --target-directory="$FLATPAK_DEST/include/pdfium"
@@ -92,20 +90,20 @@ modules:
         sources:
           - type: git
             url: https://pdfium.googlesource.com/pdfium
-            # curl 'https://omahaproxy.appspot.com/linux?channel=stable' | cut -d'.' -f 3
-            # branch: chromium/5845
+            # curl https://versionhistory.googleapis.com/v1/chrome/platforms/linux/channels/stable/versions/all/releases | grep 'version' | head -1 | cut -d'.' -f 3
+            # branch: chromium/6167
             # TODO: Using commit instead of branch is suboptimal, but linting enforces it
-            commit: 6c2c8ce87dfbf69b533e97f78807dff28c95f014
+            commit: 7388bd02f160a35d06b58e57f6374780fe4bafd3
             dest: pdfium
           - type: git
             url: https://chromium.googlesource.com/chromium/src/build.git
             # awk '/build_revision/ {print substr($2,2,40)}' pdfium/DEPS
-            commit: e100e80a1c610de82745e07c609e646e47774c4c
+            commit: 292639dc3d2fdf6fab10144ef52baf4c4c40993d
             dest: pdfium/build
           - type: git
             url: https://chromium.googlesource.com/chromium/src/third_party/abseil-cpp
             # awk '/abseil_revision/ {print substr($2,2,40)}' pdfium/DEPS
-            commit: d27fcebaf6851323d12ac63af3c9ac3581f7c8bd
+            commit: 16ed8d7d56105c49a0bbc04a428bf00dc7fadaf6
             dest: pdfium/third_party/abseil-cpp
           - type: file
             url: https://chromium.googlesource.com/chromium/src/+/master/tools/generate_shim_headers/generate_shim_headers.py?format=TEXT
@@ -130,5 +128,5 @@ modules:
             sources:
               - type: git
                 url: https://gn.googlesource.com/gn
-                commit: 5a004f9427a050c6c393c07ddb85cba8ff3849fa
+                commit: e4702d7409069c4f12d45ea7b7f0890717ca3f4b
                 disable-shallow-clone: true

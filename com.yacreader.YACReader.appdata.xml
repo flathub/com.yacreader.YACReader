@@ -4,7 +4,9 @@
     <metadata_license>FSFAP</metadata_license>
     <project_license>GPL-3.0-only</project_license>
     <name>YACReader</name>
-    <developer_name>Luis Ángel San Martín Rodríguez</developer_name>
+    <developer id="com.yacreader">
+        <name>Luis Ángel San Martín Rodríguez</name>
+    </developer>
     <summary>Yet another comic reader</summary>
     <description>
         <p>
@@ -77,6 +79,62 @@
         <binary>YACReaderLibraryServer</binary>
     </provides>
     <releases>
+        <release version="9.14.2." date="2024-02-15">
+            <description>
+                <p>YACReaderLibrary</p>
+                <ul>
+                    <li>Fix columns in the search results.</li>
+                    <li>Fix type not being propagated to new folders from their parents.</li>
+                    <li>Fix default type set to folders in the root folder when they are added.</li>
+                    <li>Improve and fix comic file size format.</li>
+                </ul>
+            </description>
+        </release>
+        <release version="9.14.1" date="2024-02-05">
+            <description>
+                <p>YACReader</p>
+                <ul>
+                    <li>Add setting to disable scroll animations and scroll smoothing, recommended
+                        if you are using a touch pad or if you find the mouse wheel behaviour laggy.</li>
+                    <li>Fix missing translation when opening YACReader from YACReaderLibrary.</li>
+                </ul>
+                <p>YACReaderLibrary</p>
+                <ul>
+                    <li>Fix "Set type" context menu the grid view for folders.</li>
+                    <li>Add a different versioning strategy for databases. DBs version will change
+                        only when the structure changes and not when YACReader version changes.</li>
+                    <li>Add support for updating libraries automatically with various settings to
+                        chose from. During automatic library updates most actions are disabled, you
+                        can stop an update by clicking on the busy indicator next to the Libraries
+                        title.</li>
+                    <li>Improve content reloading. Navigation and selection state is no longer
+                        reseted after content changes (e.g. library updates, tags edits, etc.)</li>
+                    <li>The app will try to move comics and folders to the trash bin when deletions
+                        are requested, if the file system used doesn't support trash bin the files
+                        will be removed permanetly.</li>
+                    <li>Add menu to choose what columns are displayed in the table comics view (do a
+                        right click on the header to show it). The view has new 3 new headers to
+                        choose from (Series, Volume and Story arc).</li>
+                    <li>Migrate number and arcNumber data types to TEXT. This only affects databases
+                        created before 9.13 and fixes problems with some formats of numbers (e.g.
+                        1.10).</li>
+                    <li>Propage update date to all the parent folders.</li>
+                    <li>Fix crash when resorting comics in reading lists in table view view and the
+                        comic flow is hidden.</li>
+                    <li>Fix cover loading in QML views due to malformed URLs.</li>
+                    <li>Improve style of the webui status page.</li>
+                    <li>Fix type not being propagated to new files in a folder.</li>
+                    <li>Mark the current type in the context menu so the user can know the current
+                        type.</li>
+                </ul>
+                <p>YACReaderLibraryServer</p>
+                <ul>
+                    <li>Add rescan-xml-info command.</li>
+                    <li>Improved API to provide better integration with the clients (Android 1.4.0
+                        and iOS 3.29.0).</li>
+                </ul>
+            </description>
+        </release>
         <release version="9.13.1.2307166" date="2023-07-16">
             <description>
                 <p>YACReaderLibrary</p>
