@@ -128,5 +128,5 @@ modules:
             sources:
               - type: git
                 url: https://gn.googlesource.com/gn
-                commit: e4702d7409069c4f12d45ea7b7f0890717ca3f4b
+                commit: 06cdcc8e1fa8e56f70efb4357d473345b7d1c083
                 disable-shallow-clone: true
