@@ -106,7 +106,7 @@ modules:
             commit: 16ed8d7d56105c49a0bbc04a428bf00dc7fadaf6
             dest: pdfium/third_party/abseil-cpp
           - type: file
-            url: https://chromium.googlesource.com/chromium/src/+/master/tools/generate_shim_headers/generate_shim_headers.py?format=TEXT
+            url: https://chromium.googlesource.com/chromium/src/+/main/tools/generate_shim_headers/generate_shim_headers.py?format=TEXT
             dest-filename: generate_shim_headers.py
             sha256: f95f0d29e3e12b22a7b86455265c87bc0219a25c09a7fa160d34b608992ea6da
           - type: file
