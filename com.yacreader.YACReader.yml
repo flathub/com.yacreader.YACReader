@@ -1,6 +1,6 @@
 app-id: com.yacreader.YACReader
 runtime: org.kde.Platform
-runtime-version: "6.6"
+runtime-version: "6.8"
 sdk: org.kde.Sdk
 command: YACReader
 finish-args:
@@ -106,9 +106,9 @@ modules:
             commit: 16ed8d7d56105c49a0bbc04a428bf00dc7fadaf6
             dest: pdfium/third_party/abseil-cpp
           - type: file
-            url: https://chromium.googlesource.com/chromium/src/+/master/tools/generate_shim_headers/generate_shim_headers.py?format=TEXT
+            url: https://chromium.googlesource.com/chromium/src/+/main/tools/generate_shim_headers/generate_shim_headers.py?format=TEXT
             dest-filename: generate_shim_headers.py
-            sha256: f95f0d29e3e12b22a7b86455265c87bc0219a25c09a7fa160d34b608992ea6da
+            sha256: c405eb998cc9c27d724c945f3db8a7b9d2be62ac38049301f4f52929f734b5a9
           - type: file
             url: https://aur.archlinux.org/cgit/aur.git/plain/libpdfium.pc?h=libpdfium-nojs
             dest-filename: libpdfium.pc
