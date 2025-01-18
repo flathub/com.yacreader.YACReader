@@ -44,7 +44,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/YACReader/yacreader.git
-        tag: 9.14.2
+        tag: 9.15.0
       - type: file
         path: com.yacreader.YACReader.appdata.xml
     modules:
@@ -91,19 +91,19 @@ modules:
           - type: git
             url: https://pdfium.googlesource.com/pdfium
             # curl https://versionhistory.googleapis.com/v1/chrome/platforms/linux/channels/stable/versions/all/releases | grep 'version' | head -1 | cut -d'.' -f 3
-            # branch: chromium/6167
+            # branch: chromium/6834
             # TODO: Using commit instead of branch is suboptimal, but linting enforces it
-            commit: 7388bd02f160a35d06b58e57f6374780fe4bafd3
+            commit: 84a8011ec69d0e2de271c05be7d62979608040d9
             dest: pdfium
           - type: git
             url: https://chromium.googlesource.com/chromium/src/build.git
             # awk '/build_revision/ {print substr($2,2,40)}' pdfium/DEPS
-            commit: 292639dc3d2fdf6fab10144ef52baf4c4c40993d
+            commit: 9b11bd3a6a523134ac35bcc9d1f59d04cc6f5821
             dest: pdfium/build
           - type: git
             url: https://chromium.googlesource.com/chromium/src/third_party/abseil-cpp
             # awk '/abseil_revision/ {print substr($2,2,40)}' pdfium/DEPS
-            commit: 16ed8d7d56105c49a0bbc04a428bf00dc7fadaf6
+            commit: d2ea9f0eb1a31f0e5a0ab11837ed19333700ab4c
             dest: pdfium/third_party/abseil-cpp
           - type: file
             url: https://chromium.googlesource.com/chromium/src/+/main/tools/generate_shim_headers/generate_shim_headers.py?format=TEXT
@@ -113,6 +113,10 @@ modules:
             url: https://aur.archlinux.org/cgit/aur.git/plain/libpdfium.pc?h=libpdfium-nojs
             dest-filename: libpdfium.pc
             sha256: 4e8cf32c09568ae4c59244f0a221eee8f87ea4a31ddb31f796a1d818c967d477
+          - type: git
+            url: https://github.com/fastfloat/fast_float
+            tag: v7.0.0
+            dest: pdfium/third_party/fast_float/src
         modules:
           - name: gn
             buildsystem: simple
@@ -128,5 +132,5 @@ modules:
             sources:
               - type: git
                 url: https://gn.googlesource.com/gn
-                commit: 06cdcc8e1fa8e56f70efb4357d473345b7d1c083
+                commit: 95b0f8fe31a992a33c040bbe3867901335c12762
                 disable-shallow-clone: true
