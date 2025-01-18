@@ -81,6 +81,7 @@
     <releases>
         <release version="9.15.0" date="2025-01-02">
             <description>
+                <p>YACReader</p>
                 <ul>
                     <li>Save magnifying glass size and zoom level.</li>
                     <li>Add shortcut to reset the magnifying glass to its defaults (size and zoom),
@@ -88,7 +89,6 @@
                     <li>Bump PDF render size.</li>
                     <li>Fix trackpad scrolling, it makes using trackpads more reponsive and natural.</li>
                     <li>Added more info to Help -> System info.</li>
-                <p>YACReader</p>
                 </ul>
                 <p>YACReaderLibrary</p>
                 <ul>
