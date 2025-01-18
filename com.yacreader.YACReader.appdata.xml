@@ -79,7 +79,57 @@
         <binary>YACReaderLibraryServer</binary>
     </provides>
     <releases>
-        <release version="9.14.2." date="2024-02-15">
+        <release version="9.15.0" date="2025-01-02">
+            <description>
+                <ul>
+                    <li>Save magnifying glass size and zoom level.</li>
+                    <li>Add shortcut to reset the magnifying glass to its defaults (size and zoom),
+                        it is slash by default but it can be reasigned.</li>
+                    <li>Bump PDF render size.</li>
+                    <li>Fix trackpad scrolling, it makes using trackpads more reponsive and natural.</li>
+                    <li>Added more info to Help -> System info.</li>
+                <p>YACReader</p>
+                </ul>
+                <p>YACReaderLibrary</p>
+                <ul>
+                    <li>Fix headers in the table view getting stuck in a non moveable state.</li>
+                    <li>Add option to set the type of a library. It will convert all the content to
+                        desired type (comic, manga, etc) and it will set that type as the default
+                        one for that library. Available in the library context menu.</li>
+                    <li>Added more info to Help -> System info.</li>
+                    <li>New setting to open comics in third party reader apps, it works by entering
+                        a command that will launch the app, e.g. "/path/to/the/app
+                        {comic_file_path}". You can use {comic_file_path} as a placeholder where
+                        YACReaderLibrary will place thet path to the comic file.</li>
+                    <li>Purge covers and metadata not being used after a full library update.</li>
+                    <li>Fix crash when updating the current folder content after a library update.</li>
+                    <li>Fix crash when current folders is empty after an update.</li>
+                    <li>Enable dropping content on the FolderContentView.</li>
+                    <li>Fix open containing folder... shortcut for comics.</li>
+                    <li>Add a dialog to show information about a library, it includes the number of
+                        folders and comics and the number of read comics.</li>
+                    <li>Fix occasional crashes when using automatic library updates.</li>
+                    <li>Add setting to hide the "Continue Reading..." banner from the home view.</li>
+                    <li>Improve Grid and Flow Info comics view scroll performance.</li>
+                </ul>
+                <p>YACReaderLibraryServer</p>
+                <ul>
+                    <li>New command --system-info to print information about the execution
+                        environment and available resources
+                        (including what image formats are supported and what libraries are used by
+                        the app).</li>
+                    <li>Fix automatic libraries updates not being triggered.</li>
+                </ul>
+                <p>All apps</p>
+                <ul>
+                    <li>
+                        Sorting heuristic to try to find spreads in the content of a comic is now
+                        only used for files with less than 1000 pages to avoid false positives.
+                    </li>
+                </ul>
+            </description>
+        </release>
+        <release version="9.14.2" date="2024-02-15">
             <description>
                 <p>YACReaderLibrary</p>
                 <ul>
