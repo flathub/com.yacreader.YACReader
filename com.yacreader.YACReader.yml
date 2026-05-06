@@ -29,10 +29,11 @@ cleanup:
 modules:
   - name: yacreader
     # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=yacreader
-    buildsystem: cmake
-    config-opts:
-      - '-DCMAKE_BUILD_TYPE=Release'
-      - '-DPDF_BACKEND=pdfium'
+    buildsystem: simple
+    build-commands:
+      - cmake -B build -DCMAKE_BUILD_TYPE=Release -DDECOMPRESSION_BACKEND=libarchive -DPDF_BACKEND=pdfium -DCMAKE_INSTALL_PREFIX=/app
+      - cmake --build build --parallel
+      - cmake --install build
     post-install:
       # fix YACReaderLibrary desktop file and icons
       - mv "$FLATPAK_DEST"/share/applications/{YACReaderLibrary,com.yacreader.YACReader.YACReaderLibrary}.desktop
@@ -46,17 +47,6 @@ modules:
       - type: file
         path: com.yacreader.YACReader.appdata.xml
     modules:
-      - name: 7zip
-        buildsystem: simple
-        subdir: CPP/7zip/Bundles/Alone7z
-        build-commands:
-          - make -j $FLATPAK_BUILDER_N_JOBS -f makefile.gcc
-          - install -D ./_o/7zr -t /app/bin
-          - ln -s /app/bin/7zr /app/bin/7z
-        sources:
-         - type: archive
-           url: 'https://github.com/ip7z/7zip/archive/refs/tags/26.00.tar.gz'
-           sha256: 07eafed75d661282d402dc2a3edf17e1dbb36fb813f4fbf5a2bad4f6b722aed5
       - name: pdfium
         buildsystem: simple
         build-commands:
