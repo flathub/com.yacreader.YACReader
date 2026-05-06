@@ -29,13 +29,10 @@ cleanup:
 modules:
   - name: yacreader
     # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=yacreader
-    buildsystem: qmake
+    buildsystem: cmake-ninja
     config-opts:
-      - CONFIG+=unarr pdfium server_bundled
-    install-rule: null
-    make-install-args:
-      - sub-YACReader-install_subtargets
-      - sub-YACReaderLibrary-install_subtargets
+      - '-DCMAKE_BUILD_TYPE=Release'
+      - '-DPDF_BACKEND=pdfium'
     post-install:
       # fix YACReaderLibrary desktop file and icons
       - mv "$FLATPAK_DEST"/share/applications/{YACReaderLibrary,com.yacreader.YACReader.YACReaderLibrary}.desktop
@@ -49,12 +46,21 @@ modules:
       - type: file
         path: com.yacreader.YACReader.appdata.xml
     modules:
-      - name: unarr
-        buildsystem: cmake-ninja
+      - name: 7zip
+        buildsystem: simple
+        subdir: CPP/7zip/Bundles/Alone7z
+        build-commands:
+          - make -j $FLATPAK_BUILDER_N_JOBS -f makefile.gcc
+          - install -D ./_o/7zr -t /app/bin
+          - ln -s /app/bin/7zr /app/bin/7z
         sources:
-          - type: git
-            url: https://github.com/selmf/unarr.git
-            commit: 1df8ab3d281409e9fe6bed8bf485976bb47f5bef
+         - type: archive
+           url: 'https://github.com/ip7z/7zip/archive/refs/tags/26.00.tar.gz'
+           sha256: 07eafed75d661282d402dc2a3edf17e1dbb36fb813f4fbf5a2bad4f6b722aed5
+           x-checker-data:
+           type: anitya
+           project-id: 372314
+           url-template: 'https://github.com/ip7z/7zip/archive/refs/tags/$version.tar.gz'
       - name: pdfium
         buildsystem: simple
         build-commands:
