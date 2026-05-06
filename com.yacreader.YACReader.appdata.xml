@@ -43,6 +43,37 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="10.0.0" date="2026-05-01" type="stable">
+      <url>https://github.com/YACReader/yacreader/releases/tag/10.0.0</url>
+      <description>
+        <p>YACReader</p>
+        <ul>
+          <li>Add support for continuous scroll mode.</li>
+          <li>Fix the translator.</li>
+          <li>Add Lanczos interpolation for image scaling. You can control the method used via the settings under Image adjustments.</li>
+          <li>Fix hdpi trackpad scrolling when scroll animations are enabled.</li>
+        </ul>
+        <p>YACReaderLibrary</p>
+        <ul>
+          <li>Navigating between comics in the metadata editor no longer copies fields from the previous comic into ones that have no value set. To edit shared metadata across multiple comics at once, select them all and use the bulk edit dialog.</li>
+        </ul>
+        <p>All GUI Apps</p>
+        <ul>
+          <li>Migrate Flow implementation from OpenGL to QRhi. This is a full new implementation with better performance and compatibility with operating systems and hardware.</li>
+          <li>Add light/dark themes support that follow the system configuration.</li>
+          <li>Add a theme editor and support for custom themes.</li>
+          <li>The apps include 12 built in themes to pick from.</li>
+          <li>Add an application language setting with a system default option in YACReader and YACReaderLibrary.</li>
+          <li>Fix fullscreen mode in Windows, interaction with the OS is now possible while the apps are in fullscreen.</li>
+          <li>Improve support for multi-screen setups.</li>
+          <li>Fix PDFs with crop information on macOS.</li>
+        </ul>
+        <p>All apps</p>
+        <ul>
+          <li>Add support for user-installed Qt image format plugins via the shared plugins/imageformats folder in the YACReader settings directory.</li>
+        </ul>
+      </description>
+    </release>
     <release version="9.16.3" date="2026-01-03" type="stable">
       <description>
         <p>YACReader</p>
