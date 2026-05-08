@@ -29,13 +29,11 @@ cleanup:
 modules:
   - name: yacreader
     # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=yacreader
-    buildsystem: qmake
-    config-opts:
-      - CONFIG+=unarr pdfium server_bundled
-    install-rule: null
-    make-install-args:
-      - sub-YACReader-install_subtargets
-      - sub-YACReaderLibrary-install_subtargets
+    buildsystem: simple
+    build-commands:
+      - cmake -B build -DCMAKE_BUILD_TYPE=Release -DDECOMPRESSION_BACKEND=libarchive -DPDF_BACKEND=pdfium -DCMAKE_INSTALL_PREFIX=/app
+      - cmake --build build --parallel
+      - cmake --install build
     post-install:
       # fix YACReaderLibrary desktop file and icons
       - mv "$FLATPAK_DEST"/share/applications/{YACReaderLibrary,com.yacreader.YACReader.YACReaderLibrary}.desktop
@@ -45,16 +43,10 @@ modules:
     sources:
       - type: git
         url: https://github.com/YACReader/yacreader.git
-        tag: 9.16.3
+        tag: 10.0.0
       - type: file
         path: com.yacreader.YACReader.appdata.xml
     modules:
-      - name: unarr
-        buildsystem: cmake-ninja
-        sources:
-          - type: git
-            url: https://github.com/selmf/unarr.git
-            commit: 1df8ab3d281409e9fe6bed8bf485976bb47f5bef
       - name: pdfium
         buildsystem: simple
         build-commands:
