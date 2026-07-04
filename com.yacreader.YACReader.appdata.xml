@@ -43,6 +43,47 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="10.1.0" date="2026-07-03" type="stable">
+      <url>https://github.com/YACReader/yacreader/releases/tag/10.1.0</url>
+      <description>
+        <p>YACReader</p>
+        <ul>
+          <li>Improve save current page. It includes the comic file name in the default image name and the page number.</li>
+          <li>Add an extract page action. It extracts the original visible pages when image based variants are used. The file name and page number are used as the output.</li>
+          <li>Save the destination path for save/export page between runs.</li>
+          <li>Fix low resolution images generated on save current page.</li>
+          <li>Fix magnifying glass not using the source material.</li>
+          <li>Improve last page detection in continuous scroll mode.</li>
+          <li>Improve What's new dialog to show the full changelog.</li>
+          <li>Improve continuous scroll mode with better performance and less flickering when resizing/loading.</li>
+          <li>Fix reading position being reset to the cover when changing between fit modes.</li>
+        </ul>
+        <p>YACReaderLibrary</p>
+        <ul>
+          <li>Fix comics order when opening a comic from YACReaderLibrary.</li>
+        </ul>
+        <p>YACReaderLibraryServer</p>
+        <ul>
+          <li>Don't crash at startup if the server can't bind to any address.</li>
+          <li>Redirect / to /webui.</li>
+          <li>New /webui design.</li>
+          <li>Settings regarding metadata and auto-libraries updates can be controlled from /webui/settings.</li>
+          <li>Add a new web content browser to /webui.</li>
+          <li>Add update libraries functionality to /webui.</li>
+          <li>Fix number in various HTTP APIs.</li>
+        </ul>
+        <p>All GUI Apps</p>
+        <ul>
+          <li>Better system theme detection.</li>
+          <li>New button in the help dialog for showing the changelog.</li>
+        </ul>
+        <p>All apps</p>
+        <ul>
+          <li>Add support for long paths on Windows. This is experimental and only includes library creation and opening files (including the server), other functionality may or may not work with long paths, but the critical aspect of this is the folder structure of the library so overall it is a big win. NOTE: You need to enable long paths support on Windows itself for this to work, HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem -&gt; LongPathsEnabled -&gt; 1.</li>
+          <li>Better PDF rendering that accounts for tall images used in web comics.</li>
+        </ul>
+      </description>
+    </release>
     <release version="10.0.0" date="2026-05-01" type="stable">
       <url>https://github.com/YACReader/yacreader/releases/tag/10.0.0</url>
       <description>
