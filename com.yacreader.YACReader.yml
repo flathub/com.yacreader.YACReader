@@ -32,7 +32,7 @@ modules:
     buildsystem: simple
     build-commands:
       - cmake -B build -DCMAKE_BUILD_TYPE=Release -DDECOMPRESSION_BACKEND=libarchive -DPDF_BACKEND=pdfium -DCMAKE_INSTALL_PREFIX=/app
-      - cmake --build build --parallel
+      - cmake --build build --parallel 2
       - cmake --install build
     post-install:
       # fix YACReaderLibrary desktop file and icons
@@ -43,7 +43,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/YACReader/yacreader.git
-        tag: 10.0.0
+        tag: 10.1.0
       - type: file
         path: com.yacreader.YACReader.appdata.xml
     modules:
