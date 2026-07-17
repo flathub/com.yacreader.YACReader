@@ -1,7 +1,9 @@
 app-id: com.yacreader.YACReader
 runtime: org.kde.Platform
-runtime-version: "6.10"
+runtime-version: "6.11"
 sdk: org.kde.Sdk
+sdk-extensions:
+  - org.freedesktop.Sdk.Extension.llvm22
 command: YACReader
 finish-args:
   - --share=ipc
@@ -51,7 +53,6 @@ modules:
         buildsystem: simple
         build-commands:
           # https://aur.archlinux.org/cgit/aur.git/tree/PKGBUILD?h=libpdfium-nojs
-
           # Patch abseil build to be static
           - sed -i -e 's/component(/static_library(/' -e 's/is_component_build(/false/' pdfium/third_party/abseil-cpp/BUILD.gn
           # Use system provided icu library (unbundling)
@@ -62,6 +63,7 @@ modules:
           - base64 --decode generate_shim_headers.py > pdfium/tools/generate_shim_headers/generate_shim_headers.py
           # Create fake gclient_args.gni file to satisfy include list for build/config/compiler/compiler.gni
           - touch pdfium/build/config/gclient_args.gni
+          - echo "build_with_chromium = false" > "pdfium/build/config/gclient_args.gni"
           # Exclude test fonts from build
           - sed -i '/"\/\/third_party\/test_fonts",/s/^/#/g' pdfium/testing/BUILD.gn
           # Remove cross-compile-toolchain-prefix for gcc (needed for aarch64 build)
@@ -69,7 +71,7 @@ modules:
           # Use correct no-outline for gcc (needed for aarch64)
           - sed -i 's/"-mno-outline"/"-mno-outline-atomics"/g' pdfium/build/config/compiler/BUILD.gn
           # Build
-          - gn --root=pdfium gen pdfium/out/Release --args="is_clang=false use_sysroot=false is_debug=false symbol_level=0 pdf_enable_v8=false pdf_enable_xfa=false treat_warnings_as_errors=false use_system_libjpeg=true use_system_zlib=true pdf_bundle_freetype=false use_system_freetype=true use_system_lcms2=true use_system_libpng=true use_custom_libcxx=false pdf_is_standalone=true use_system_libopenjpeg2=true is_component_build=true pdf_use_partition_alloc=false"
+          - gn --root=pdfium gen pdfium/out/Release --args="is_clang=false use_sysroot=false is_debug=false symbol_level=0 pdf_enable_v8=false pdf_enable_xfa=false treat_warnings_as_errors=false use_system_libjpeg=true use_system_zlib=true pdf_bundle_freetype=false use_system_freetype=true use_system_lcms2=true use_system_libpng=true use_custom_libcxx=false pdf_is_standalone=true use_system_libopenjpeg2=true is_component_build=true pdf_use_partition_alloc=false use_system_harfbuzz = true"
           - ninja -C pdfium/out/Release pdfium
           # TODO: use a variable for version
           - sed -e 's/@VERSION@/6167/g' -e 's#^\s*prefix\s*=.*$#prefix='"$FLATPAK_DEST"'#' -i libpdfium.pc
@@ -84,20 +86,25 @@ modules:
           - type: git
             url: https://pdfium.googlesource.com/pdfium
             # curl https://versionhistory.googleapis.com/v1/chrome/platforms/linux/channels/stable/versions/all/releases | grep 'version' | head -1 | cut -d'.' -f 3
-            # branch: chromium/6834
+            # branch: chromium/7955
             # TODO: Using commit instead of branch is suboptimal, but linting enforces it
-            commit: 84a8011ec69d0e2de271c05be7d62979608040d9
+            commit: c052afb72a08d79a26bcf3103d11f344981b09f1
             dest: pdfium
           - type: git
             url: https://chromium.googlesource.com/chromium/src/build.git
             # awk '/build_revision/ {print substr($2,2,40)}' pdfium/DEPS
-            commit: 9b11bd3a6a523134ac35bcc9d1f59d04cc6f5821
+            commit: 8a46ede8ea86151737d9c284f82d238b3c701fa7
             dest: pdfium/build
           - type: git
             url: https://chromium.googlesource.com/chromium/src/third_party/abseil-cpp
             # awk '/abseil_revision/ {print substr($2,2,40)}' pdfium/DEPS
-            commit: d2ea9f0eb1a31f0e5a0ab11837ed19333700ab4c
+            commit: 5e42a36a85a252d8cdee6c39661d2bfd9883fd5c
             dest: pdfium/third_party/abseil-cpp
+          - type: git
+            url: https://chromium.googlesource.com/chromium/src/third_party/simdutf
+            # awk '/simdutf_revision/ {print substr($2,2,40)}' pdfium/DEPS
+            commit: f7356eed293f8208c40b3c1b344a50bd70971983
+            dest: pdfium/third_party/simdutf
           - type: file
             url: https://chromium.googlesource.com/chromium/src/+/main/tools/generate_shim_headers/generate_shim_headers.py?format=TEXT
             dest-filename: generate_shim_headers.py
@@ -108,16 +115,15 @@ modules:
             sha256: 4e8cf32c09568ae4c59244f0a221eee8f87ea4a31ddb31f796a1d818c967d477
           - type: git
             url: https://github.com/fastfloat/fast_float
-            tag: v7.0.0
+            tag: v8.2.10
             dest: pdfium/third_party/fast_float/src
         modules:
           - name: gn
             buildsystem: simple
             build-options:
-              env:
-                # Set CC and CXX to override default (llvm) build settings
-                CC: gcc
-                CXX: g++
+                append-path: /usr/lib/sdk/llvm22/bin
+                prepend-ld-library-path: /usr/lib/sdk/llvm22/lib
+
             build-commands:
               - ./build/gen.py
               - ninja -C out gn
@@ -125,5 +131,5 @@ modules:
             sources:
               - type: git
                 url: https://gn.googlesource.com/gn
-                commit: 95b0f8fe31a992a33c040bbe3867901335c12762
+                commit: 9ece3f5254c273cb46606a6571963f931c3b012d
                 disable-shallow-clone: true
