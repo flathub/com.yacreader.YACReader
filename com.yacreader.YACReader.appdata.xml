@@ -43,6 +43,56 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="10.2.0" date="2026-08-08" type="stable">
+      <url>https://github.com/YACReader/yacreader/releases/tag/10.2.0</url>
+      <description>
+        <p>YACReader</p>
+        <ul>
+          <li>Change the default shortcuts for modifying the magnifying glass size to avoid conflicts with the page zoom shortcuts.</li>
+          <li>Add an optional circular magnifying glass with an optional ring.</li>
+          <li>Add optional edge easing for the magnifying glass.</li>
+          <li>Require a full wheel notch before the magnifying glass changes size or zoom.</li>
+          <li>Fix the go to flow bar asking for permission to control the computer on macOS.</li>
+          <li>Add a setting to control whether Escape quits the reader or cancels the topmost active mode.</li>
+          <li>Fix a crash caused by changing reading direction while quickly turning pages.</li>
+          <li>Use pinch and Ctrl+wheel to change the zoom level.</li>
+        </ul>
+        <p>YACReaderLibrary</p>
+        <ul>
+          <li>Add a library repair function to restore missing covers and rescan files that previously failed to be added.</li>
+          <li>Add actions to create and restore library database backups.</li>
+          <li>Automatically create and retain database backups in .yacreaderlibrary/backups.</li>
+          <li>When database corruption is detected, offer to attempt a repair or restore a backup. Damaged originals are preserved in .yacreaderlibrary/recovery.</li>
+          <li>Fix comics info export/import and covers package import/export error handling.</li>
+          <li>Fix grid comic cell information height so the title does not overlap the other fields.</li>
+          <li>Add a function to open the library root location.</li>
+          <li>Add a help dialog and quick search presets to the search field menu.</li>
+          <li>Fix open containing folder asking for permission to control Finder on macOS.</li>
+          <li>Improve the server dialog and add an option to open the Web UI from it.</li>
+        </ul>
+        <p>YACReaderLibraryServer</p>
+        <ul>
+          <li>Add commands to repair libraries, create and restore backups, and repair damaged databases.</li>
+          <li>Automatically create and retain database backups in .yacreaderlibrary/backups.</li>
+          <li>Preserve damaged database originals in .yacreaderlibrary/recovery.</li>
+        </ul>
+        <p>WebUI</p>
+        <ul>
+          <li>Add a basic web reader.</li>
+          <li>Add XML rescan functionality.</li>
+          <li>Add more metadata fields to the detail view.</li>
+        </ul>
+        <p>All GUI Apps</p>
+        <ul>
+          <li>Add new settings dialogs.</li>
+        </ul>
+        <p>All apps</p>
+        <ul>
+          <li>Unify comic sorting to use string-based universal numbers everywhere.</li>
+          <li>Add experimental support for image-based comics in EPUB format.</li>
+        </ul>
+      </description>
+    </release>
     <release version="10.1.0" date="2026-07-03" type="stable">
       <url>https://github.com/YACReader/yacreader/releases/tag/10.1.0</url>
       <description>
