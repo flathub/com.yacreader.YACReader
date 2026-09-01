@@ -43,6 +43,33 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="10.3.0" date="2026-09-01" type="stable">
+      <url>https://github.com/YACReader/yacreader/releases/tag/10.3.0</url>
+      <description>
+        <p>YACReaderLibrary</p>
+        <ul>
+          <li>Unify folder and comic browsing in the grid view, with settings to show folders alongside comics and keep them visually separated.</li>
+          <li>Show information about folders, lists, and selected items in the side information panel.</li>
+          <li>Fix drag and drop sorting for comics in lists.</li>
+          <li>Restore state when navigating back and forward through history.</li>
+          <li>Restore scroll position and the current item when switching content views.</li>
+          <li>Keep the current scroll position when editing comics.</li>
+          <li>Fix the grid view information panel not updating after comic metadata changes.</li>
+          <li>Fix the rating context menu in the grid view.</li>
+          <li>Add an action to reset a comic's rating.</li>
+          <li>Add support for renaming folders while preserving the state of the folder and its subfolders.</li>
+          <li>Add experimental tools for renaming files and creating folder structures based on metadata.</li>
+          <li>Support dropping images onto folders and comics to change their covers.</li>
+        </ul>
+        <p>WebUI</p>
+        <ul>
+          <li>Add per-library search.</li>
+          <li>Use the same sorting as the desktop apps.</li>
+          <li>Restore the previous scroll position when navigating back through library folders.</li>
+          <li>Add a per-library continue reading list.</li>
+        </ul>
+      </description>
+    </release>
     <release version="10.2.0" date="2026-08-08" type="stable">
       <url>https://github.com/YACReader/yacreader/releases/tag/10.2.0</url>
       <description>
