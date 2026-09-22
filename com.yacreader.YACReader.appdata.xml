@@ -43,6 +43,19 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="10.3.1" date="2026-09-22" type="stable">
+      <url>https://github.com/YACReader/yacreader/releases/tag/10.3.1</url>
+      <description>
+        <p>YACReader</p>
+        <ul>
+          <li>Fix the continuous vertical scroll mode shortcut not being saved.</li>
+          <li>Improve handling of invalid characters when renaming files.</li>
+          <li>Improve the layout of the renaming and organizing dialog.</li>
+          <li>Add a software-rendered go to flow option for systems with performance problems.</li>
+          <li>Fix scrolling while a file is loading.</li>
+        </ul>
+      </description>
+    </release>
     <release version="10.3.0" date="2026-09-01" type="stable">
       <url>https://github.com/YACReader/yacreader/releases/tag/10.3.0</url>
       <description>
