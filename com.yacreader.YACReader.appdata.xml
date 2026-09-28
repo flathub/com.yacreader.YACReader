@@ -43,6 +43,27 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="10.3.2" date="2026-09-28" type="stable">
+      <url>https://github.com/YACReader/yacreader/commit/f0bad930044820e7945c0aa2e41cfd9b0ff3e43a</url>
+      <description>
+        <p>YACReader</p>
+        <ul>
+          <li>Improve double page layout stability and zooming performance.</li>
+          <li>Fix unnecessary flow animation and continuous scroll mode flow updates.</li>
+          <li>Fix bookmarks and page saving in continuous scroll mode.</li>
+          <li>Fix saving and exporting while pages are still loading.</li>
+          <li>Add more information about the rendering pipelines in use.</li>
+        </ul>
+        <p>All GUI apps</p>
+        <ul>
+          <li>Fix performance degradation on high-resolution screens.</li>
+        </ul>
+        <p>All apps</p>
+        <ul>
+          <li>Fix sorting with Qt builds that do not include ICU.</li>
+        </ul>
+      </description>
+    </release>
     <release version="10.3.1" date="2026-09-22" type="stable">
       <url>https://github.com/YACReader/yacreader/releases/tag/10.3.1</url>
       <description>
