@@ -43,6 +43,29 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="10.4.0" date="2026-10-09" type="stable">
+      <url>https://github.com/YACReader/yacreader/releases/tag/10.4.0</url>
+      <description>
+        <p>YACReader</p>
+        <ul>
+          <li>Avoid duplicated images in double page mode after a layout adjustment.</li>
+          <li>Add a setting to draw a fold shadow in double page mode.</li>
+        </ul>
+        <p>YACReaderLibrary</p>
+        <ul>
+          <li>Reload views only when a remote client changes the open library and a sync has changed something.</li>
+        </ul>
+        <p>Server</p>
+        <ul>
+          <li>Add an API for remote clients and the WebUI to change comic and folder fields, including read status, completion status, and type.</li>
+        </ul>
+        <p>WebUI</p>
+        <ul>
+          <li>Add actions to set comics and folders as read or unread, completed or uncompleted, and change their type, and to remove comics from Continue reading.</li>
+          <li>Open these actions with a right click or long press on a cover, or with the menu next to the comic or folder title.</li>
+        </ul>
+      </description>
+    </release>
     <release version="10.3.2" date="2026-09-28" type="stable">
       <url>https://github.com/YACReader/yacreader/commit/f0bad930044820e7945c0aa2e41cfd9b0ff3e43a</url>
       <description>
