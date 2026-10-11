@@ -45,7 +45,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/YACReader/yacreader.git
-        commit: f0bad930044820e7945c0aa2e41cfd9b0ff3e43a
+        commit: 28f92f4d8bdbb7170f6002e00bed7503356eea03
       - type: file
         path: com.yacreader.YACReader.appdata.xml
     modules:
