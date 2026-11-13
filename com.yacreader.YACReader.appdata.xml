@@ -43,6 +43,20 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="10.5.1" date="2026-11-13" type="stable">
+      <url>https://github.com/YACReader/yacreader/releases/tag/10.5.1</url>
+      <description>
+        <p>YACReader</p>
+        <ul>
+          <li>Fix double page mode when turning pages quickly and improve its behavior.</li>
+        </ul>
+        <p>YACReaderLibrary</p>
+        <ul>
+          <li>Show the search menu button next to the clear button so saving a search as a smart list works.</li>
+          <li>Disable the QML cache on Linux systems where stale cache entries can cause blank content screens.</li>
+        </ul>
+      </description>
+    </release>
     <release version="10.5.0" date="2026-11-09" type="stable">
       <url>https://github.com/YACReader/yacreader/releases/tag/10.5.0</url>
       <description>
